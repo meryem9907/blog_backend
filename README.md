@@ -34,10 +34,31 @@ Api documentation can be viewed on following endpoints:
           - Flush the database with `python manage.py flush`
           - install jq
           - run in an bash environment 
-  
-
-
 
 ## Deployment via docker
+- Install docker on https://docs.docker.com/get-started/get-docker/
+- Build the container
+`docker build -t blog-api .`
+- Check if container runs
+`docker image list`
+- Run server via
+```
+# ensure in settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        "OPTIONS": {"timeout": 20}
+    }
+}
+# create volume an run api via docker
+docker volume create blog_db
+docker run --name blog-api -p 8000:8000 --env-file .env -v blog_db:/app/data blog-api
+```
+- Server is available at: http://127.0.0.1:8000
+
+
+## Current database
+- the default database used is the file-based sql-lite database
 
 
