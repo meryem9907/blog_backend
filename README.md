@@ -28,7 +28,7 @@ Api documentation can be viewed on following endpoints:
 - /api/docs/redoc/
 
 ### Run tests
--`python manage.py test`
+`python manage.py test`
 - alternatively you can use the curl endpoints in tests.sh. Make sure you run the server before that.
     - Note before running the script:
           - Flush the database with `python manage.py flush`
